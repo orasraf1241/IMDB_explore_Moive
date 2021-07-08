@@ -23,15 +23,17 @@ public class main {
 
      public static String findMovie(String movieName){
 
-         String movieUrl ="https://www.imdb.com";//
+         String movieUrl ="https://www.imdb.com";
          String url = "https://www.imdb.com/find?q="+ movieName+ "&s=tt&ttype=ft&ref_=fn_ft";
 
          try {
              final Document document = Jsoup.connect(url).get();
 
-             StringBuilder inspect = new StringBuilder(document.select("tr.odd.findResult > .result_text").get(0).toString());
-             String moviaId =inspect.substring(inspect.indexOf("/title/"),inspect.lastIndexOf("?ref_=f"));
-             movieUrl=movieUrl+moviaId;
+             //building the url to a movie
+                 StringBuilder inspect = new StringBuilder(document.select("tr.odd.findResult > .result_text").get(0).toString());
+                 String moviaId = inspect.substring(inspect.indexOf("/title/"), inspect.lastIndexOf("?ref_=f"));
+                 movieUrl = movieUrl + moviaId;
+
 
          } catch (IOException e) {
              e.printStackTrace();
