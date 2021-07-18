@@ -1,65 +1,85 @@
 package IMDB;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Moviadetails {
 
-
-
-
     public String moviaName;
-    public String moviaTitle;
     public String url;
     public  String rating;
     public  String duration;
 
     public List<String>  director;
-    public List<String>  actors;
+    public List<String>  stars;
     public List<String>  genre;
 
+
+
+    public String printList(List<String> list) {
+        String str = "";
+        for (String s : list) {
+            str += s+",";
+        }
+        return str.substring(0,str.length()-1);
+    }
     @Override
     public String toString(){
-      //  String genreList = genre.toString(customers.toArray()).replace("[", "").replace("]", "");
-
         StringBuilder sb = new StringBuilder(this.moviaName+" | "
-                +this.genre.toString().replace("[","").replace("]","")
+                +printList(genre)
                 +" |"+this.rating
                 +" |" +this.duration +
-                "|"+ this.director.toString().replace("[","").replace("]","")
-                +"|"+this.actors.toString().replace("[","").replace("]",""));
-
-        sb.deleteCharAt('[');
-
+                "|"+ printList(director)
+                +"| "+printList(stars));
         System.out.println(sb);
+
         return null;
     }
 
-    public String getUrl() {
-        return url;
-    }
 
-    public String getMoviaTitle() {
-        return moviaTitle;
-    }
 
-    public List<String> getGenre() {
-        return genre;
-    }
 
-    public String getRating() {
-        return rating;
-    }
 
-    public String getDuration() {
-        return duration;
-    }
+    public static Moviadetails findElement(String movieUrl, Moviadetails movie){
+        try {
+            movie.genre = new LinkedList<>();
+            movie.stars = new LinkedList<>();
+            movie.director = new LinkedList<>();
+            final Document document = Jsoup.connect(movieUrl).get();
 
-    public List<String> getDirector() {
-        return director;
-    }
 
-    public List<String> getActors() {
-        return actors;
+            movie.moviaName = document.select
+                    (".dxSWFG.TitleHeader__TitleText-sc-1wu6n3d-0").text();
+            movie.duration = document.select
+                    (".baseAlt.dxizHm.TitleBlockMetaData__MetaDataList-sc-12ein40-0.ipc-inline-list--show-dividers.ipc-inline-list > li.ipc-inline-list__item:nth-of-type(3)").text();
+            movie.url = movieUrl;
+            movie.rating = document.select
+                    ("li.ipc-inline-list__item:nth-of-type(2) > .rgaOW.TitleBlockMetaData__StyledTextLink-sc-12ein40-1.ipc-link--inherit-color.ipc-link--baseAlt.ipc-link").text();
+
+            for (Element e: document.select(".ipc-chip--on-baseAlt.ipc-chip.fzmeux.GenresAndPlot__GenreChip-cum89p-3")) {
+                    movie.genre.add(e.text());
+            }
+
+            for (Element e: document.select(".iGxbgr.PrincipalCredits__PrincipalCreditsPanelWideScreen-hdn81t-0 > .ipc-metadata-list--baseAlt.title-pc-list.ipc-metadata-list--dividers-all.ipc-metadata-list > li.ipc-metadata-list-item--link.ipc-metadata-list__item:nth-of-type(3) > .ipc-metadata-list-item__content-container > .baseAlt.ipc-metadata-list-item__list-content.ipc-inline-list--inline.ipc-inline-list--show-dividers.ipc-inline-list > li.ipc-inline-list__item")){
+                movie.stars.add(e.text());
+            }
+
+            for (Element e: document.select(".iGxbgr.PrincipalCredits__PrincipalCreditsPanelWideScreen-hdn81t-0 > .ipc-metadata-list--baseAlt.title-pc-list.ipc-metadata-list--dividers-all.ipc-metadata-list > li.ipc-metadata-list__item:nth-of-type(1) > .ipc-metadata-list-item__content-container > .baseAlt.ipc-metadata-list-item__list-content.ipc-inline-list--inline.ipc-inline-list--show-dividers.ipc-inline-list > li.ipc-inline-list__item"))
+            {
+                movie.director.add(e.text());
+               // System.out.println(e.text());
+            }
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        return movie;
+
     }
 
 }
