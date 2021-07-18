@@ -30,7 +30,9 @@ public class Moviadetails {
     }
     @Override
     public String toString(){
-        StringBuilder sb = new StringBuilder(this.moviaName+" | "
+        StringBuilder sb = new StringBuilder(
+
+                this.moviaName+" | "
                 +printList(genre)
                 +" |"+this.rating
                 +" |" +this.duration +
@@ -52,9 +54,17 @@ public class Moviadetails {
             movie.director = new LinkedList<>();
             final Document document = Jsoup.connect(movieUrl).get();
 
+            movie.moviaName=document.select(".TitleHeader__TitleText-sc-1wu6n3d-0").text();
+//            if(document.select
+//                    (".TitleHeader__TitleText-sc-1wu6n3d-0").text()=="")
+//            movie.moviaName = document.select
+//                    (".TitleHeader__TitleText-sc-1wu6n3d-0").text();
+//            else
+//                movie.moviaName = document.select
+//                        (".cLNRlG.TitleHeader__TitleText-sc-1wu6n3d-0").text();
 
-            movie.moviaName = document.select
-                    (".dxSWFG.TitleHeader__TitleText-sc-1wu6n3d-0").text();
+
+
             movie.duration = document.select
                     (".baseAlt.dxizHm.TitleBlockMetaData__MetaDataList-sc-12ein40-0.ipc-inline-list--show-dividers.ipc-inline-list > li.ipc-inline-list__item:nth-of-type(3)").text();
             movie.url = movieUrl;
