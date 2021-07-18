@@ -11,12 +11,6 @@ in this app we develope a command line tools that informt you about movies and g
 - Director or list of directors if more than one (comma separated)
 - list of actores that participates in the film
 
-
-## Description about all sources we use:
--  i use this video to lern how to use web scraping with jsoup library https://www.youtube.com/watch?v=tI1qGwhn_bs  
-
--  Download jsoup-1.14.1.jar from --> https://jsoup.org/download 
-
         
 ## Example how to use the tool
 ![example](/src/pic/scren.png "example") 
@@ -36,6 +30,12 @@ this is the output:
 2. open the command line prees on the windows button and write "cmd" and open the command line 
 3. write "java -jar  path\IMDBTitles.jar"
 4. write your movie that you wont to get information about aim
+
+
+## Description about all sources we use:
+-  i use this video to lern how to use web scraping with jsoup library https://www.youtube.com/watch?v=tI1qGwhn_bs  
+
+-  Download jsoup-1.14.1.jar from --> https://jsoup.org/download 
 
 
 
