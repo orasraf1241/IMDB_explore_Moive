@@ -19,19 +19,19 @@ in this app we develope a command line tools that informt you about movies and g
 
         
 ## Example how to use the tool
-![ServerClient Java UML](/src/pic/scren.png "ServerClient Java UML") 
+![example](/src/pic/scren.png "example") 
 
 -For example we serch for: "star trek"
 this is the output:    
 - Star Trek | Action,Adventure,Sci-Fi |PG-13 |2h 7min|J.J. Abrams| Chris Pine,Zachary Quinto,Simon Pegg
 
-## install thet tool
+# install thet tool
 1. this tools working only for java version 15.0.2 or newest versions
 2. for runing this tool you hava 2 options    
          1. is clone the code with gitub and run it on your workspace like eclipse
          2. You need the download the jar file from this link https://easyupload.io/lhr0c5
 
-# runing the tool withe command line 
+# Running the tool with command line
 1. download the jar file from this link https://easyupload.io/lhr0c5
 2. open the command line prees on the windows button and write "cmd" and open the command line 
 3. write "java -jar  path\IMDBTitles.jar"
