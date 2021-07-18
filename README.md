@@ -21,10 +21,9 @@ in this app we develope a command line tools that informt you about movies and g
 ## Example how to use the tool
 ![ServerClient Java UML](/src/pic/scren.png "ServerClient Java UML") 
 
--For example we serch for: "Avengers"
+-For example we serch for: "star trek"
 this is the output:    
-- The Avengers | Action, Adventure, Sci-Fi |PG-13 |2h 23min|Joss Whedon|Robert Downey Jr., Chis Evans, Scarlett Johansson
-
+- Star Trek | Action,Adventure,Sci-Fi |PG-13 |2h 7min|J.J. Abrams| Chris Pine,Zachary Quinto,Simon Pegg
 
 
 
