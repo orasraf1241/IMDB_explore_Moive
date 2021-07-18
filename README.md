@@ -18,10 +18,8 @@ this is the output:
 
 
 ## Description about all sources we use:
-
-          -  i use this video to lern how to use web scraping with jsoup library https://www.youtube.com/watch?v=tI1qGwhn_bs 
-         -   Download jsoup-1.14.1.jar from --> https://jsoup.org/download 
-         -   this tool help you to find the "cssQuery"     https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=he****
+-  i use this video to lern how to use web scraping with jsoup library https://www.youtube.com/watch?v=tI1qGwhn_bs   -   Download jsoup-1.14.1.jar from --> https://jsoup.org/download 
+-   -   this tool help you to find the "cssQuery"     https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=he****
           
 
 
