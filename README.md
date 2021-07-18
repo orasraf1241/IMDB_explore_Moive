@@ -18,7 +18,9 @@ this is the output:
 
 
 ## Description about all sources we use:
--  i use this video to lern how to use web scraping with jsoup library https://www.youtube.com/watch?v=tI1qGwhn_bs   -  Download jsoup-1.14.1.jar from --> https://jsoup.org/download 
+-  i use this video to lern how to use web scraping with jsoup library https://www.youtube.com/watch?v=tI1qGwhn_bs  
+
+-  Download jsoup-1.14.1.jar from --> https://jsoup.org/download 
 
           
 
