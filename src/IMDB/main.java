@@ -14,6 +14,8 @@ import java.io.IOException;
 public class main {
 
      public static final String baseUrl = "https://www.imdb.com/find?s=tt&q=avengers&ref_=nv_sr_sm";
+
+     //in this fnc we check if the movie is exsist
      public static boolean isDevelopment(String url){
          try {
              final Document document = Jsoup.connect(url).get();
@@ -29,6 +31,8 @@ public class main {
 
 
      }
+
+     //this functions give as the first movie that hava all the rules
      public static String findUrlMovie(String movieName){
          String url ="https://www.imdb.com";
          String searchResult = "https://www.imdb.com/find?q="+ movieName+ "&s=tt&ttype=ft&ref_=fn_ft";
@@ -37,9 +41,12 @@ public class main {
          try {
 
              final Document document = Jsoup.connect(searchResult).get();
+             //here we get the numbers of the search result in IMDB
              int numberOfMovieResult =document.select("tr.odd.findResult > .result_text").size()+document.select("tr.even.findResult > .result_text").size();
+             //in this loop we check that we  have all the information we looking for about the movie
              for (int i = 0; i < numberOfMovieResult; i++)
               {
+
                  //building the url to a movie
                  if (i % 2 == 0) {
                      StringBuilder inspect = new StringBuilder(document.select("tr.odd.findResult:nth-of-type("+(i+1)+") > .result_text").toString());
@@ -86,7 +93,7 @@ public class main {
             return;
         }
         Moviadetails moviadetails = new Moviadetails();
-        moviadetails.findElement(UrlMovie,moviadetails);
+        moviadetails.movieInfo(UrlMovie,moviadetails);
 
 
         moviadetails.toString();
