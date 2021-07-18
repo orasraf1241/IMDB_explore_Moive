@@ -3,12 +3,14 @@
 based on web scraping library JSoup, written in Java. 
 
 in this app we develope a command line tools that inform you about movies, For example we serch for: "Avengers"
+
 1.Movie title
 2. Genre : list of genre
-3. MPAA rating. (R, PG-13, etc)
-4. Movie duration
-5. Director or list of directors if more than one (comma separated)
-6. Star or list of stars ( comma separated )
+3. 
+4. MPAA rating. (R, PG-13, etc)
+5. Movie duration
+6. Director or list of directors if more than one (comma separated)
+7. Star or list of stars ( comma separated )
 
 
 
