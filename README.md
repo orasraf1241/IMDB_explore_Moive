@@ -2,7 +2,7 @@
 
 based on web scraping library JSoup, written in Java. 
 
-in this app we develope a command line tools that inform you about movies, For example we serch for: "Avengers"
+in this app we develope a command line tools that informt you about movies and give you this fields:
 
 - Movie title 
 - Genre : list of genre
@@ -11,8 +11,9 @@ in this app we develope a command line tools that inform you about movies, For e
 - Director or list of directors if more than one (comma separated)
 - Star or list of stars ( comma separated )
 
-
-
+ For example we serch for: "Avengers"
+this is the output:    
+- The Avengers | Action, Adventure, Sci-Fi |PG-13 |2h 23min|Joss Whedon|Robert Downey Jr., Chis Evans, Scarlett Johansson
 
 
 ## link for  library & uBlock Origin‬
@@ -22,7 +23,6 @@ in this app we develope a command line tools that inform you about movies, For e
           
 
 
-this is the output:    
-        The Avengers | Action, Adventure, Sci-Fi |PG-13 |2h 23min|Joss Whedon|Robert Downey Jr., Chis Evans, Scarlett Johansson
+
 
 
