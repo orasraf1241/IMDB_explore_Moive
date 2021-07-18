@@ -18,7 +18,8 @@ in this app we develope a command line tools that informt you about movies and g
 -  Download jsoup-1.14.1.jar from --> https://jsoup.org/download 
 
         
-## ADD pic
+## Example how to use the tool
+![Presentation Project](![Presentation Project](/src/pic/צילום מסך 2021-07-18 223858.png)
  For example we serch for: "Avengers"
 this is the output:    
 - The Avengers | Action, Adventure, Sci-Fi |PG-13 |2h 23min|Joss Whedon|Robert Downey Jr., Chis Evans, Scarlett Johansson
