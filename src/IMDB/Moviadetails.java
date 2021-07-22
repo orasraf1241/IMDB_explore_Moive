@@ -7,6 +7,7 @@ import org.jsoup.nodes.Element;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 public class Moviadetails {
 
@@ -26,22 +27,27 @@ public class Moviadetails {
         for (String s : list) {
             str += s+",";
         }
-        return str.substring(0,str.length()-1);
+        return str;//.substring(0,str.length()-1);
     }
-    //this methods print the values to screen
-    @Override
-    public String toString(){
-        StringBuilder sb = new StringBuilder(
 
-                this.moviaName+" | "
-                +printList(genre)
-                +" |"+this.rating
-                +" |" +this.duration +
-                "|"+ printList(director)
-                +"| "+printList(stars));
-        System.out.println(sb);
 
-        return null;
+    public void toString(String moviaName){
+
+        if (this.moviaName.toLowerCase(Locale.ROOT).matches("(.*)"+moviaName+"(.*)") || this.moviaName.toUpperCase(Locale.ROOT).matches("(.*)"+moviaName+"(.*)") || this.moviaName.contains(moviaName)) {
+            StringBuilder sb = new StringBuilder(
+
+                    this.moviaName + " | "
+                            + printList(genre)
+                            + " |" + this.rating
+                            + " |" + this.duration +
+                            "|" + printList(director)
+                            + "| " + printList(stars));
+            if (sb.charAt(sb.length()-1)==',');
+                sb.deleteCharAt(sb.length()-1);
+            System.out.println(sb);
+
+        }
+
     }
 
 
@@ -85,5 +91,6 @@ public class Moviadetails {
         return movie;
 
     }
+
 
 }

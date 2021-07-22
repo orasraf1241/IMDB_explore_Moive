@@ -32,14 +32,18 @@ public class main {
 
      }
 
+     public static String movieUrl(StringBuilder inspect, String url, Document d,int i){
+         String moviaId = inspect.substring(inspect.indexOf("/title/"), inspect.lastIndexOf("?ref_=f"));
+         String movieUrl = url + moviaId;
+         return d.select("tr.even.findResult:nth-of-type("+(i+1)+") > .result_text").text();
+     }
      //this functions give as the first movie that hava all the rules
      public static String findUrlMovie(String movieName){
          String url ="https://www.imdb.com";
          String searchResult = "https://www.imdb.com/find?q="+ movieName+ "&s=tt&ttype=ft&ref_=fn_ft";
-         String name;
+         String name = null;
          String movieUrl = null;
          try {
-
              final Document document = Jsoup.connect(searchResult).get();
              //here we get the numbers of the search result in IMDB
              int numberOfMovieResult =document.select("tr.odd.findResult > .result_text").size()+document.select("tr.even.findResult > .result_text").size();
@@ -53,25 +57,25 @@ public class main {
                      String moviaId = inspect.substring(inspect.indexOf("/title/"), inspect.lastIndexOf("?ref_=f"));
                      movieUrl = url + moviaId;
                      name = document.select("tr.odd.findResult:nth-of-type("+(i+1)+") > .result_text").text();
-                     //System.out.println(i+") "+name);
-
                  } else {
                      StringBuilder inspect = new StringBuilder(document.select("tr.even.findResult:nth-of-type("+(i+1)+") > .result_text").toString());
                      String moviaId = inspect.substring(inspect.indexOf("/title/"), inspect.lastIndexOf("?ref_=f"));
                      movieUrl = url + moviaId;
                      name = document.select("tr.even.findResult:nth-of-type("+(i+1)+") > .result_text").text();
-                    // System.out.println(i+") "+name);
-
                  }
                  if (name.toLowerCase(Locale.ROOT).matches("(.*)"+movieName+"(.*)") || name.toUpperCase(Locale.ROOT).matches("(.*)"+movieName+"(.*)") || name.contains(movieName)){
-                     if (isDevelopment(movieUrl))
-                          return movieUrl;
+                     if (isDevelopment(movieUrl)) {
+                         Moviadetails m = new Moviadetails();
+                         m.movieInfo(movieUrl, m);
+                         m.toString(movieName);
+                         name="finish";
+                     }
                  }
 
              }
          } catch (IOException e) {
          }
-         return null;
+         return name;
      }
 
 
@@ -87,16 +91,16 @@ public class main {
 
         System.out.println("Enter a Movia name: ");
         String UrlMovie = sc.nextLine();
-         UrlMovie = findUrlMovie(UrlMovie);
-         if (UrlMovie==null) {
+        UrlMovie = findUrlMovie(UrlMovie);
+        if (UrlMovie==null) {
             System.out.println("We cant find your movie");
             return;
         }
-        Moviadetails moviadetails = new Moviadetails();
-        moviadetails.movieInfo(UrlMovie,moviadetails);
+//        Moviadetails moviadetails = new Moviadetails();
+//        moviadetails.movieInfo(UrlMovie,moviadetails);
 
 
-        moviadetails.toString();
+       // moviadetails.toString();
 
 
 
