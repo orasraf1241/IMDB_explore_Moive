@@ -1,6 +1,5 @@
-## java Project for a Experis Academy 
-
-based on web scraping library JSoup, written in Java. 
+## java Project based on web scraping library JSoup,
+written in Java. 
 
 in this app we develope a command line tools that informt you about movies and give you this fields:
 
