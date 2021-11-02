@@ -24,6 +24,7 @@ public class Moviadetails {
 //This methos help as to print the list like
     public String printList(List<String> list) {
         String str = "";
+        
         for (String s : list) {
             str += s+",";
         }
@@ -33,15 +34,17 @@ public class Moviadetails {
 
     public void toString(String moviaName){
 
-        if (this.moviaName.toLowerCase(Locale.ROOT).matches("(.*)"+moviaName+"(.*)") || this.moviaName.toUpperCase(Locale.ROOT).matches("(.*)"+moviaName+"(.*)") || this.moviaName.contains(moviaName)) {
+        if (this.moviaName.toLowerCase(Locale.ROOT).matches("(.*)"+moviaName+"(.*)") ||
+            this.moviaName.toUpperCase(Locale.ROOT).matches("(.*)"+moviaName+"(.*)") || this.moviaName.contains(moviaName)) {
             StringBuilder sb = new StringBuilder(
-
+                
                     this.moviaName + " | "
                             + printList(genre)
                             + " |" + this.rating
                             + " |" + this.duration +
                             "|" + printList(director)
                             + "| " + printList(stars));
+            
             if (sb.charAt(sb.length()-1)==',');
                 sb.deleteCharAt(sb.length()-1);
             System.out.println(sb);
@@ -53,10 +56,11 @@ public class Moviadetails {
 
     //this methos gives us all the information that we  need to now about the movie
     public static Moviadetails movieInfo(String movieUrl, Moviadetails movie){
+        movie.genre = new LinkedList<>();
+        movie.stars = new LinkedList<>();
+        movie.director = new LinkedList<>();
+        
         try {
-            movie.genre = new LinkedList<>();
-            movie.stars = new LinkedList<>();
-            movie.director = new LinkedList<>();
             final Document document = Jsoup.connect(movieUrl).get();
             //get the movie name
             movie.moviaName=document.select(".TitleHeader__TitleText-sc-1wu6n3d-0").text();
